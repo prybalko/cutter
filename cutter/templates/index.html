@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cutter.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cutter.js') }}"></script>
+    <title>Simple URL Shortener</title>
+</head>
+<body>
+    <div class="container">
+
+        <h1 class="form-url-heading">URL Shortener</h1>
+        <form class="form-url" id="urlForm">
+            <div class="form-group row">
+                <label for="inputEmail" class="sr-only">Original URL</label>
+                <div class="col-md-offset-2 col-md-6 col-sm-10 no-padding">
+                    <input type="url" id="longUrl" class="form-control" placeholder="Your original URL here" required autofocus>
+                </div>
+                <div class="col-sm-2 no-padding">
+                    <button class="btn btn-success btn-lg btn-block" id="shortenBtn" type="submit">SHORTEN</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-offset-2 col-md-8 no-padding" style="display: none" id="shortUrlPanel">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your short link</h3>
+                </div>
+                <div class="panel-body" id="shortUrl"></div>
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+</body>
+</html>
