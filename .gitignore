@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Covers JetBrains IDEs:
+.idea
+
+# Project database
+cutter.db
