@@ -10,7 +10,7 @@ $( document ).ready(function() {
             data: $("#urlForm").serialize(),
             success: function (data) {
                 $("#shortUrlPanel").show();
-                $("#shortUrl").text(data);
+                $("#shortUrl").text(location.href + data);
             }
         });
 
