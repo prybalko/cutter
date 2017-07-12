@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/cutter.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/jquery-1.12.4.min.js') }}"></script>
@@ -18,12 +18,13 @@
             <div class="form-group row">
                 <label for="inputEmail" class="sr-only">Original URL</label>
                 <div class="col-md-offset-2 col-md-6 col-sm-10 no-padding">
-                    <input type="url" id="longUrl" class="form-control" placeholder="Your original URL here" required autofocus>
+                    {{ form.long_url(type="url", class_="form-control", placeholder="Your original URL here", required=True, autofocus=True) }}
                 </div>
                 <div class="col-sm-2 no-padding">
                     <button class="btn btn-success btn-lg btn-block" id="shortenBtn" type="submit">SHORTEN</button>
                 </div>
             </div>
+            {{ form.csrf_token }}
         </form>
         <div class="col-md-offset-2 col-md-8 no-padding" style="display: none" id="shortUrlPanel">
             <div class="panel panel-success">
@@ -35,5 +36,18 @@
         </div>
 
     </div> <!-- /container -->
+
+    <script type="text/javascript">
+        var csrf_token = "{{ csrf_token() }}";
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>

@@ -8,8 +8,7 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
-.form-url .form-url-heading,
-.form-url .checkbox {
+.form-url .form-url-heading {
   margin-bottom: 10px;
 }
 .form-url .form-control {
@@ -24,7 +23,7 @@ body {
   padding: 0;
   margin-bottom: 5px;
 }
-#shortenBtn, #longUrl{
+#shortenBtn, #long_url{
   border-radius: 0;
 }
 h1 {
