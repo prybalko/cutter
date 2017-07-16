@@ -26,13 +26,16 @@
             </div>
             {{ form.csrf_token }}
         </form>
-        <div class="col-md-offset-2 col-md-8 no-padding" style="display: none" id="shortUrlPanel">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Your short link</h3>
-                </div>
-                <div class="panel-body">
-                    <input type="text" id="shortUrl" readonly>
+        <div class="col-md-offset-2 col-md-8 no-padding">
+            <div class="alert alert-danger" role="alert" style="display: none" id="urlAlert"></div>
+            <div style="display: none" id="shortUrlPanel">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your short link</h3>
+                    </div>
+                    <div class="panel-body">
+                        <input type="text" id="shortUrl" readonly>
+                    </div>
                 </div>
             </div>
         </div>

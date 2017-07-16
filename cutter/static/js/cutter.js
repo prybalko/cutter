@@ -2,7 +2,7 @@ $( document ).ready(function() {
     $("#urlForm").submit(function (e) {
 
         var url = "/shorten/";
-        $("#shortUrlPanel").hide();
+        $("#shortUrlPanel, #urlAlert").hide();
 
         $.ajax({
             type: "POST",
@@ -12,6 +12,9 @@ $( document ).ready(function() {
             success: function (data) {
                 $("#shortUrlPanel").show();
                 $("#shortUrl").val(location.href + data.short_url).focus().select();
+            },
+            error: function(xhr, status, error) {
+                $("#urlAlert").text(xhr.statusText).show();
             }
         });
 
