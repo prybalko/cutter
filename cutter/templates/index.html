@@ -16,9 +16,9 @@
         <h1 class="form-url-heading">URL Shortener</h1>
         <form class="form-url" id="urlForm">
             <div class="form-group row">
-                <label for="inputEmail" class="sr-only">Original URL</label>
+                <label for="long_url" class="sr-only">Original URL</label>
                 <div class="col-md-offset-2 col-md-6 col-sm-10 no-padding">
-                    {{ form.long_url(type="url", class_="form-control", placeholder="Your original URL here", required=True, autofocus=True) }}
+                    {{ form.long_url(type="text", class_="form-control", placeholder="Your original URL here", required=True, autofocus=True) }}
                 </div>
                 <div class="col-sm-2 no-padding">
                     <button class="btn btn-success btn-lg btn-block" id="shortenBtn" type="submit">SHORTEN</button>
@@ -31,7 +31,9 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Your short link</h3>
                 </div>
-                <div class="panel-body" id="shortUrl"></div>
+                <div class="panel-body">
+                    <input type="text" id="shortUrl" readonly>
+                </div>
             </div>
         </div>
 

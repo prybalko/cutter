@@ -29,3 +29,7 @@ body {
 h1 {
   text-align:center;
 }
+#shortUrl, #shortUrl:focus {
+  border: none;
+  outline-width: 0;
+}

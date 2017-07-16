@@ -8,9 +8,10 @@ $( document ).ready(function() {
             type: "POST",
             url: url,
             data: $("#urlForm").serialize(),
+            dataType: 'json',
             success: function (data) {
                 $("#shortUrlPanel").show();
-                $("#shortUrl").text(location.href + data);
+                $("#shortUrl").val(location.href + data.short_url).focus().select();
             }
         });
 

@@ -32,7 +32,7 @@ class TestShortenUrl(CutterTestCase):
         long_url = 'http://example.com'
         rv = self.client.post('/shorten/', data={'long_url': long_url})
         self.assert_200(rv)
-        short_url = rv.data
+        short_url = rv.json['short_url']
         rv = self.client.get('/{}'.format(short_url))
         self.assertRedirects(rv, long_url)
 

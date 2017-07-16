@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+import json
+
 from flask import redirect, render_template
 from werkzeug.exceptions import abort
 
@@ -25,4 +28,4 @@ def shorten_url_api():
         abort(400)
     long_url = form.long_url.data
     short_url = shorten_url(long_url)
-    return short_url
+    return json.dumps({'short_url': short_url})

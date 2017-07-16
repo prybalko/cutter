@@ -1,5 +1,8 @@
-from werkzeug.exceptions import abort
+# -*- coding: utf-8 -*-
 import hashlib
+from urlparse import urlparse
+
+from werkzeug.exceptions import abort
 
 from cutter import db
 from cutter.models import Link
@@ -19,7 +22,11 @@ def base_n(num, b, numerals="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNO
 
 
 def shorten_url(long_url):
-    hex_hash = hashlib.sha1(long_url).hexdigest()
+    parsed_url = urlparse(long_url)
+    if not parsed_url.scheme:
+        long_url = parsed_url._replace(**{"scheme": "http"}).geturl().replace('///', '//')
+
+    hex_hash = hashlib.sha1(long_url.encode('utf-8')).hexdigest()
     _hash = short_url = base_n(int(hex_hash, 16), 62)
 
     for url_length in xrange(MIN_URL_LENGTH, len(_hash)+1):
