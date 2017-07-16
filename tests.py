@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import tempfile
 import unittest
@@ -36,16 +37,17 @@ class TestShortenUrl(CutterTestCase):
         rv = self.client.get('/{}'.format(short_url))
         self.assertRedirects(rv, long_url)
 
-    def test_double_submission(self):
-        long_url = 'http://example.com'
+    def test_schemaless_urls(self):
+        long_url = 'http://кириллический.домен'
         rv = self.client.post('/shorten/', data={'long_url': long_url})
         short_url_1 = rv.data
-        rv = self.client.post('/shorten/', data={'long_url': long_url})
+        schemaless_url = 'кириллический.домен'
+        rv = self.client.post('/shorten/', data={'long_url': schemaless_url})
         short_url_2 = rv.data
         self.assertEqual(short_url_1, short_url_2)
 
     def test_too_long_url(self):
-        too_long_url = 'http://' + 'a'*2000
+        too_long_url = 'http://' + 'a'*3000
         rv = self.client.post('/shorten/', data={'long_url': too_long_url})
         self.assert_400(rv)
 
