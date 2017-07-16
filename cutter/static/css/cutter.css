@@ -1,6 +1,5 @@
 body {
   padding-top: 40px;
-  padding-bottom: 40px;
   background-color: #eee;
 }
 
@@ -29,7 +28,8 @@ body {
 h1 {
   text-align:center;
 }
-#shortUrl, #shortUrl:focus {
+#shortUrl {
+  width: 100%;
   border: none;
   outline-width: 0;
 }
