@@ -23,6 +23,7 @@ def base_n(num, b, numerals="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNO
 def shorten_url(long_url):
     parsed_url = urlparse(long_url)
     if not parsed_url.scheme:
+        # If the url has no scheme, assume that's HTTP
         long_url = parsed_url._replace(**{"scheme": "http"}).geturl().replace('///', '//')
 
     hex_hash = hashlib.sha1(long_url.encode('utf-8')).hexdigest()
