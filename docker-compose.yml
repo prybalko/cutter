@@ -1,6 +1,16 @@
 cutter:
   build: .
   ports:
-   - "8080:8080"
+   - "127.0.0.1:8080:8080"
   volumes:
    - .:/code
+nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 80:80
+    links:
+      - cutter:cutter
+    volumes:
+      - ./deployment/:/etc/nginx/conf.d/
+      - ./cutter/static:/static
